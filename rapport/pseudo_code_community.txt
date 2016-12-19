@@ -1,0 +1,25 @@
+communitiesIdentification(g):
+	identifier = [-1]*size;	succ = [0]*size; current_id
+	for each node
+		get descendant
+		while descendant
+			++succ[i]
+			next descendant
+	while not every node visited
+		++current_id
+		explore(node with most debts && not visited)
+	put nodes with same identifier in the same list
+	return result
+
+explore(k):
+	if not visited
+		mark as visited
+		update id
+		get descendant
+		while descendant
+			explore(descendant index)
+			next descendant
+	elif node already visited but id needs to be updated
+		for each identifier
+			if needs an update
+				update

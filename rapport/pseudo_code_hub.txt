@@ -1,0 +1,25 @@
+hubsIdentification(g, n):
+	g.makeUnordered
+	for each node i:
+			explore(i)
+    for each articularion point found:
+        if smallest community >= k:
+            append to result
+	return result
+
+explore(i):
+	++current_id
+	val[k] = current_id
+	low = cid
+	while descendant:
+		if not visited:
+			m = explore()
+			if m < low:
+				low = m
+			if m >= val[i] and not starting node nor marked yet:
+                articulation point found
+                sol[i] = smallest community created	
+		else:
+			if val[descendant] < low:
+				low = val[decendant]
+	return low

@@ -1,0 +1,47 @@
+begin find_cycles(current, start):
+    found_cycle = False
+    cycles = []
+
+    stack.append(current)
+    blocked[current] = True
+
+    while next_node is not None:
+        if next_node is the start node:
+            add current stack to cycles array
+            found_cycle = True
+        elif next_node is not blocked:
+            if find_cycles(next_node, start): # DFS
+                found_cycle = True
+        next_node = get next node
+
+    if found_cycle:
+        unblock(current)
+    else: # Otherwise add relation to blocked map: neighbour -> me
+        while next_node is not None:
+            if current not in b_map: # block map
+                append current node to next_node blocked map
+        next_node = get next node
+
+    # Finish by removing 'current' from stack since we're done.
+    stack.remove(current)
+    return found_cycle
+end find_cycles
+
+begin unblock(node):
+    blocked[node] = False
+    Bnode = b_map[node]
+    while Bnode:
+        next_node = Bnode.pop(0)
+        if blocked[next_node]:
+            unblock(next_node)
+end unblock
+
+# entry point
+begin get_elementary_cycles():
+    for ssc in tarjan.ssc():
+        for start_node in ssc:
+            least_node = min(ssc)
+            find_cycles(least_node, least_node)
+            ssc = tarjan.remove_useless_edges(ssc, least_node)
+    return cycles array
+end get_elementary_cycles
